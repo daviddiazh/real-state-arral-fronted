@@ -6,21 +6,23 @@
     display: none;
 }
 
-.container {
+.width {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* padding: 5px 10px; */
-    padding: 5px 0px;
-    position: fixed;
-    overflow: hidden;
-    max-width: 1280px;
-    margin: 0 auto;
+}
+
+.container {
     z-index: 1;
     right: 0;
     left: 0;
     top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+    position: fixed;
+    overflow: hidden;
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 .child-container {
@@ -37,12 +39,17 @@
     background-color: #f9f9f9;
     padding: 7px 13px;
     border-radius: 6px;
+    cursor: pointer;
 }
 
 .text {
     font-size: 16px;
     padding: 0;
     margin: 0;
+}
+
+.icon {
+    cursor: pointer;
 }
 
 @media (max-width: 725px) {
@@ -58,6 +65,7 @@
 
     .btn-close {
         padding: 20px 15px;
+        cursor: pointer;
     }
 
     .child-container-mobile {
@@ -68,6 +76,11 @@
         justify-content: center;
         flex-direction: column;
         width: 270px;
+    }
+
+    .item {
+        width: 100%;
+        text-align: center;
     }
 
     .desktop {
