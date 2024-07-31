@@ -3,18 +3,19 @@ import { Link } from 'react-router-dom';
 import { Drawer } from '@mui/material';
 import { Icon } from '../Icon/index';
 import styles from './styles.module.css';
+import logo from '../../assets/logo-uno.png';
 
 export const Navbar = () => {
 
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div>
+        <header>
             <div className={styles.desktop}>
                 <div className={styles.width}>
-                    <div className={styles.container}>
+                    <div className={styles.container} style={{ zIndex: 999999 }}>
                         <Link to='/'>
-                            <p>LOGO</p>
+                            <img src={logo} alt="Logo de Arrendamientos Alvarez" className={styles.logo} />
                         </Link>
 
                         <div className={styles['child-container']}>
@@ -34,9 +35,9 @@ export const Navbar = () => {
 
             <div className={styles.mobile}>
                 <div className={styles.width}>
-                    <div className={styles.container}>
+                    <div className={styles.container} style={{ zIndex: isOpen ? 99 : 9999 }}>
                         <Link to='/'>
-                            <p>LOGO</p>
+                            <img src={logo} alt="Logo de Arrendamientos Alvarez" className={styles.logo} />
                         </Link>
 
                         {
@@ -73,6 +74,6 @@ export const Navbar = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
     )
 }
