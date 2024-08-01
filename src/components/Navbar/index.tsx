@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Drawer } from '@mui/material';
 import { Icon } from '../Icon/index';
 import styles from './styles.module.css';
-import logo from '../../assets/logo-uno.png';
+import logo from '../../assets/logo-completo.png';
 
 export const Navbar = () => {
 
@@ -14,13 +14,20 @@ export const Navbar = () => {
             <div className={styles.desktop}>
                 <div className={styles.width}>
                     <div className={styles.container} style={{ zIndex: 999999 }}>
-                        <Link to='/'>
-                            <img src={logo} alt="Logo de Arrendamientos Alvarez" className={styles.logo} />
+                        <Link to='/' style={{ margin: 0, padding: 0, display: 'flex', justifyContent: 'center' }}>
+                            <img 
+                                src={logo} 
+                                alt="Logo de Arrendamientos Alvarez" 
+                                className={styles.logo} 
+                            />
                         </Link>
 
                         <div className={styles['child-container']}>
                             <Link to='/payments' className={styles.item}>
                                 <p className={styles.text}>Pagos</p>
+                            </Link>
+                            <Link to='/search/all/all' className={styles.item}>
+                                <p className={styles.text}>Inmuebles</p>
                             </Link>
                             <Link to='/contact' className={styles.item}>
                                 <p className={styles.text}>Contacto</p>
@@ -37,7 +44,12 @@ export const Navbar = () => {
                 <div className={styles.width}>
                     <div className={styles.container} style={{ zIndex: isOpen ? 99 : 9999 }}>
                         <Link to='/'>
-                            <img src={logo} alt="Logo de Arrendamientos Alvarez" className={styles.logo} />
+                            <img 
+                                src={logo} 
+                                alt="Logo de Arrendamientos Alvarez" 
+                                className={styles.logo} 
+                                style={{ margin: 0, padding: 0, display: 'flex', justifyContent: 'center'}} 
+                            />
                         </Link>
 
                         {
@@ -50,9 +62,19 @@ export const Navbar = () => {
                                     <div onClick={() => setIsOpen(!isOpen)} className={styles['btn-close']}>
                                         <Icon name='x' />
                                     </div>
+                                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                        <img 
+                                            src={logo} 
+                                            alt="Logo de Arrendamientos Alvarez" 
+                                            className={styles.bigLogo} 
+                                        />
+                                    </div>
                                     <div className={styles['child-container-mobile']}>
                                         <Link to='/payments' className={styles.item}>
                                             <p className={styles.text}>Pagos</p>
+                                        </Link>
+                                        <Link to='/search/all/all' className={styles.item}>
+                                            <p className={styles.text}>Inmuebles</p>
                                         </Link>
                                         <Link to='/contact' className={styles.item}>
                                             <p className={styles.text}>Contacto</p>

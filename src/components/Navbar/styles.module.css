@@ -17,7 +17,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 20px;
+    padding: 10px 20px;
     position: fixed;
     overflow: hidden;
     max-width: 1280px;
@@ -28,8 +28,10 @@
 }
 
 .logo {
-    width: 60px;
+    width: 150px;
     background-color: #fff;
+    margin: 0;
+    padding: 0;
 }
 
 .child-container {
@@ -40,6 +42,7 @@
 
 .item {
     padding: 7px 13px;
+    gap: 6px;
 }
 
 .item:hover {
@@ -53,6 +56,8 @@
     font-size: 16px;
     padding: 0;
     margin: 0;
+    font-weight: 600;
+    color: #333;
 }
 
 .icon {
@@ -62,6 +67,16 @@
 @media (max-width: 725px) {
     .mobile {
         display: block;
+    }
+
+    .logo {
+        width: 110px;
+        background-color: #fff;
+    }
+
+    .bigLogo {
+        width: 200px;
+        margin-top: 100px;
     }
 
     .container-mobile {
@@ -76,7 +91,8 @@
     }
 
     .child-container-mobile {
-        height: 72vh;
+        /* height: 72vh; */
+        height: 80vh;
         display: flex;
         gap: 25px;
         align-items: center;
@@ -90,12 +106,12 @@
         width: 100%;
         text-align: center;
         padding: 0;
-        padding: 7px 13px;
+        padding: 7px 0;
     }
 
     .item:hover {
         background-color: #f9f9f9;
-        padding: 7px 13px;
+        padding: 7px 0;
         border-radius: 6px;
         cursor: pointer;
     }

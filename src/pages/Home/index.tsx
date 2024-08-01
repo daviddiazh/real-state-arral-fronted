@@ -15,8 +15,11 @@ import banner3 from '../../assets/banners/banner3.png';
 import './styles.css';
 import styles from './styles.module.css';
 import { TextField } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Icon } from '../../components/Icon';
 
 const serviceTypeList = [
+    'Cualquiera',
     'Venta',
     'Arriendo'
 ];
@@ -24,10 +27,27 @@ const serviceTypeList = [
 export const Home = () => {
   const [serviceType, setServiceType] = useState('');
   const [code, setCode] = useState('');
-  console.log({ serviceType, code })
+
+  const navigate = useNavigate();
+  
+  const handleSearch = () => {
+    console.log({ serviceType, code })
+    let url = '';
+    if ((serviceType === '' || serviceType === 'Cualquiera') && code.length > 1) {
+        url = `/search/all/${code}`
+    } else if (serviceTypeList.includes(serviceType) && code === '') {
+        url = `/search/${serviceType}/all`
+    } else if (serviceType === '' && code === '') {
+        url = `/search/all/all`
+    } else if (serviceTypeList.includes(serviceType) && code.length > 1) {
+        url = `/search/${serviceType}/${code}`
+    }
+
+    return navigate(url);
+  }
 
   return (
-    <div style={{ marginTop: 70 }}>
+    <div style={{ marginTop: 65 }}>
         
         <Swiper
             cssMode
@@ -48,7 +68,10 @@ export const Home = () => {
 
         <div className={styles['centered']}>
             <div className={styles['search-container']}>
-                <p className={styles['title-search']}>Encuentra tu próximo inmueble</p>
+                <div className={styles['flex']}>
+                    <Icon name='casa-03' size={17} />
+                    <p className={styles['title-search']}>¡Encuentra tu próximo inmueble aquí!</p>
+                </div>
 
                 <div className={styles['inputs-container']}>
                     <div className={styles['input']}>
@@ -71,11 +94,18 @@ export const Home = () => {
                                 }
                             }
                             style={{ width: '100%' }}
+                            autoComplete='off'
                         />
                     </div>
                 </div>
 
-                <button className={styles['btn-search']}>Buscar</button>
+                <button 
+                    className={styles['btn-search']}
+                    onClick={handleSearch}
+                >
+                    <p>Buscar</p>
+                    <Icon name='buscar-04' color='#fff' size={17} />
+                </button>
             </div>
         </div>
     </div>
