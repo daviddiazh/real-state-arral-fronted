@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Mousewheel, Keyboard, Autoplay } from 'swiper/modules';
 import { useQuery } from '@tanstack/react-query';
@@ -26,6 +26,7 @@ import { baseURL, password, user } from '../../utils/const';
 import { Error } from '../../components/Error';
 import { Loading } from '../../components/Loading';
 import { IEstate } from '../../interfaces/estate';
+import { Element, scroller } from 'react-scroll';
 
 const serviceTypeList = [
     'Cualquiera',
@@ -58,6 +59,19 @@ export const Home = () => {
   const { data: estates, error, isLoading } = useQuery({ queryKey: ['starred-estates'], queryFn: async () => {
     return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=4&pagina=1`);
   } });
+
+  const location = useLocation();
+
+    useEffect(() => {
+        const section = location.hash?.substring(1)
+        
+        if (section) {
+            scroller.scrollTo(section, {
+                smooth: true,
+                duration: 500,
+            });
+        }
+    }, [location]);
 
   return (
     <div className={styles['margin-top']}>
@@ -143,8 +157,8 @@ export const Home = () => {
             }
         </div>
         
-        <div id='about' style={{ marginTop: 15 }}>
-            <p  className={styles['generic-title']}>Sobre Nosotros</p>
+        <Element name='about' style={{ marginTop: 15 }}>
+            <p className={styles['generic-title']}>Sobre Nosotros</p>
 
             <div className={styles['container-about']}>
                 <div className={styles['container-about-child1']}>
@@ -185,7 +199,7 @@ export const Home = () => {
                     </Map>
                 </div>
             </div>
-        </div>
+        </Element>
 
         <div id='contact'>
             <p  className={styles['generic-title']}>Contacto</p>

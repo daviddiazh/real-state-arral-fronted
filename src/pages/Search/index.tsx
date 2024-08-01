@@ -1,12 +1,14 @@
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import { animateScroll as scroll } from 'react-scroll';
 import { Estate } from '../../components/Estate';
 import { baseURL, password, user } from '../../utils/const';
 import styles from './styles.module.css';
 import { Loading } from '../../components/Loading';
 import { Error } from '../../components/Error';
 import { IEstate } from '../../interfaces/estate';
+import { useEffect } from 'react';
 
 export const Search = () => {
 
@@ -24,6 +26,12 @@ export const Search = () => {
     }
   } });
 
+  useEffect(() => {
+    scroll.scrollToTop({
+        duration: 0,
+        smooth: true,
+    });
+  }, []);
 
   return (
         <div className={styles['margin-top']}>
