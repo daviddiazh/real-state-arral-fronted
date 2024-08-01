@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Mousewheel, Keyboard, Autoplay } from 'swiper/modules';
 import { copFormatter } from '../../utils/copFormatter'
@@ -10,7 +11,8 @@ import 'swiper/css';
 
 import '../../pages/Home/styles.css';
 
-export const Estate = ({ estate }) => {
+export const Estate = ({ estate }: any) => {
+
     return (
         <div className={styles['card']} key={estate?.consecutivo}>
             {
@@ -26,7 +28,7 @@ export const Estate = ({ estate }) => {
                         delay: 5000,
                     }}
                 >
-                    {estate.imagenes.map(image => (
+                    {estate.imagenes.map((image: any) => (
                         <SwiperSlide 
                             key={image?.fotourl}
                         >

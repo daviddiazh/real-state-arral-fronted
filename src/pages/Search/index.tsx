@@ -6,6 +6,7 @@ import { baseURL, password, user } from '../../utils/const';
 import styles from './styles.module.css';
 import { Loading } from '../../components/Loading';
 import { Error } from '../../components/Error';
+import { IEstate } from '../../interfaces/estate';
 
 export const Search = () => {
 
@@ -36,7 +37,7 @@ export const Search = () => {
             }
             <div className={styles['grid-container']}>
                 {
-                    estates?.data && estates?.data?.map(estate => (
+                    estates?.data && estates?.data?.map((estate: IEstate) => (
                         <Estate estate={estate} key={estate?.consecutivo} />
                     ))
                 }

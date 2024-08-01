@@ -25,6 +25,7 @@ import { Estate } from '../../components/Estate';
 import { baseURL, password, user } from '../../utils/const';
 import { Error } from '../../components/Error';
 import { Loading } from '../../components/Loading';
+import { IEstate } from '../../interfaces/estate';
 
 const serviceTypeList = [
     'Cualquiera',
@@ -132,7 +133,7 @@ export const Home = () => {
             }
             <div className={styles['grid-container']}>
                 {
-                    estates?.data && estates?.data?.map(estate => (
+                    estates?.data && estates?.data?.map((estate: IEstate) => (
                         <Estate estate={estate} key={estate?.consecutivo} />
                     ))
                 }
