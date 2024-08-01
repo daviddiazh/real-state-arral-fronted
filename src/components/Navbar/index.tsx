@@ -31,13 +31,22 @@ export const Navbar = () => {
                                 <Link to='/search/all/all' className={styles.item}>
                                     <p className={styles.text}>Inmuebles</p>
                                 </Link>
-                                <Link to='/contact' className={styles.item}>
+                                <ScrollLink 
+                                    smooth={true} 
+                                    duration={500} 
+                                    to="contact" 
+                                    className={styles.item}
+                                >
                                     <p className={styles.text}>Contacto</p>
-                                </Link>
-                                {/* <Link to='/about' className={styles.item}>
+                                </ScrollLink>
+                                <ScrollLink 
+                                    smooth={true} 
+                                    duration={500} 
+                                    to="about" 
+                                    className={styles.item}
+                                >
                                     <p className={styles.text}>Sobre Nosotros</p>
-                                </Link> */}
-                                <ScrollLink smooth={true} duration={500} to="about" className={styles.item}><p className={styles.text}>Sobre Nosotros</p></ScrollLink>
+                                </ScrollLink>
                             </div>
                         </div>
                     </div>
@@ -90,7 +99,7 @@ export const Navbar = () => {
                                             >
                                                 <p className={styles.text}>Inmuebles</p>
                                             </Link>
-                                            <Link 
+                                            {/* <Link 
                                                 to='/contact' 
                                                 className={styles.item} 
                                                 onClick={() => setIsOpen(false)}
@@ -103,7 +112,25 @@ export const Navbar = () => {
                                                 onClick={() => setIsOpen(false)}
                                             >
                                                 <p className={styles.text}>Sobre Nosotros</p>
-                                            </Link>
+                                            </Link> */}
+                                            <ScrollLink 
+                                                smooth={true} 
+                                                duration={500} 
+                                                to="contact" 
+                                                className={styles.item}
+                                                onClick={() => setIsOpen(false)}
+                                            >
+                                                <p className={styles.text}>Contacto</p>
+                                            </ScrollLink>
+                                            <ScrollLink 
+                                                smooth={true} 
+                                                duration={500} 
+                                                to="about" 
+                                                className={styles.item}
+                                                onClick={() => setIsOpen(false)}
+                                            >
+                                                <p className={styles.text}>Sobre Nosotros</p>
+                                            </ScrollLink>
                                         </div>
                                     </Drawer>
                                 ) : (
