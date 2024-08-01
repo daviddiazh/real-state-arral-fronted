@@ -8,8 +8,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import 'swiper/css';
 
-import banner1 from '../../assets/banners/banner1.png';
-import banner2 from '../../assets/banners/banner2.png';
+import banner1 from '../../assets/banners/banner1.jpg';
+import banner2 from '../../assets/banners/banner2.jpg';
 import banner3 from '../../assets/banners/banner3.png';
 
 import './styles.css';
@@ -17,6 +17,9 @@ import styles from './styles.module.css';
 import { TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Icon } from '../../components/Icon';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { copFormatter } from '../../utils/copFormatter';
 
 const serviceTypeList = [
     'Cualquiera',
@@ -25,6 +28,10 @@ const serviceTypeList = [
 ];
 
 export const Home = () => {
+  const user = import.meta.env.VITE_API_USER;
+  const password = import.meta.env.VITE_API_PASSWORD;
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
+
   const [serviceType, setServiceType] = useState('');
   const [code, setCode] = useState('');
 
@@ -46,8 +53,13 @@ export const Home = () => {
     return navigate(url);
   }
 
+  console.log(`${baseURL}/${user}/${password}?cantidadporpagina=8&pagina=1`)
+  const { data: estates } = useQuery({ queryKey: ['starred-estates'], queryFn: async () => {
+    return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=4&pagina=1`);
+  } });
+
   return (
-    <div style={{ marginTop: 65 }}>
+    <div className={styles['margin-top']}>
         
         <Swiper
             cssMode
@@ -106,6 +118,48 @@ export const Home = () => {
                     <p>Buscar</p>
                     <Icon name='buscar-04' color='#fff' size={17} />
                 </button>
+            </div>
+        </div>
+
+        <div>
+            <p className={styles['title-estates']}>Inmuebles Destacados</p>
+            <div className={styles['grid-container']}>
+                {
+                    estates?.data && estates?.data?.map(estate => (
+                        <div className={styles['card']} key={estate?.consecutivo}>
+                            {
+                                <Swiper
+                                    cssMode
+                                    navigation
+                                    pagination
+                                    mousewheel
+                                    keyboard
+                                    modules={[Navigation, Mousewheel, Keyboard, Autoplay]}
+                                    className="mySwiper"
+                                    autoplay={{
+                                        delay: 5000,
+                                    }}
+                                >
+                                    {estate.imagenes.map(image => (
+                                        <SwiperSlide><img src={image?.fotourl} alt="" className={styles['product-image']} /></SwiperSlide>
+                                    ))}
+                                </Swiper>
+                            }
+                            <div style={{ padding: '10px 15px' }}>
+                                <p className={styles['code-label']}>Código: <span className={styles['code-text']}>{estate.consecutivo}</span></p>
+                                <p 
+                                    className={styles['class-text']}
+                                >
+                                    {estate.clase} en
+                                    <span> {estate.tipo_servicio}</span>, 
+                                    <span className={styles['code-label']}> {estate?.area}m<sup>2</sup></span>
+                                </p>
+                                <p className={styles['city']}>{estate.municipio}, <span>{estate.barrio ? estate.barrio : ''}</span></p>
+                                <p className={styles['price']}>{estate?.tipo_servicio === 'Venta' ? copFormatter(estate?.precio_venta) : copFormatter(estate?.precio)}</p>
+                            </div>
+                        </div>
+                    ))
+                }
             </div>
         </div>
     </div>

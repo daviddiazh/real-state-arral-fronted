@@ -1,3 +1,7 @@
+.margin-top {
+    margin-top: 66px;
+}
+
 .centered {
     width: 100%;
     display: flex;
@@ -61,7 +65,126 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
+.title-estates {
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+    padding: 10px 0;
+    text-align: left;
+    font-size: 25px;
+    color: #333;
+    font-weight: 600;
+}
+
+.grid-container {
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+    grid-gap: 15px;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+  
+.card {
+    border-radius: 13px;
+    box-shadow: -2px 3px 5px rgba(0, 0, 0, 0.07);
+}
+
+.product-image {
+    width: 100%;
+    height: 300px;
+    object-fit: fill;
+    border-radius: 13px 13px 0 0;
+}
+
+.code-label {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 15px;
+    color: #5b5b5b;
+}
+
+.code-text {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+.class-text {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 19px;
+    color: #333;
+    font-weight: 500;
+}
+
+.city {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 16px;
+    color: #5b5b5b;
+    font-weight: 500;
+}
+
+.price {
+    margin: 0;
+    padding: 0;
+    padding: 10px 0;
+    text-align: left;
+    font-size: 21px;
+    color: #333;
+    font-weight: 600;
+}
+
+.btn-info {
+    border: none;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+@media (max-width: 1290px) {
+    .title-estates {
+        padding: 10px 20px;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 27rem), 1fr));
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 920px) {
+    .title-estates {
+        padding: 10px 20px;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+        padding: 10px 20px;
+    }
+}
+
 @media (max-width: 800px) {
+    .margin-top {
+        margin-top: 56px;
+    }
+
     .inputs-container {
         width: 100%;
         display: block;
@@ -84,5 +207,13 @@
 
     .search-container {
         margin: 15px;
+    }
+
+    .title-estates {
+        padding: 0 15px;
+    }
+
+    .grid-container {
+        padding: 10px 15px;
     }
 }
