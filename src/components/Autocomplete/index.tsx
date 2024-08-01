@@ -16,6 +16,7 @@ export const AutocompleteInput = ({
             onChange={(event: any, newValue: string | null) => {
                 setValue(newValue);
             }}
+            style={{ width: '100%' }}
             renderInput={(params) => (
                 <TextField
                   {...params}

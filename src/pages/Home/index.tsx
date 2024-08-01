@@ -13,19 +13,18 @@ import banner2 from '../../assets/banners/banner2.png';
 import banner3 from '../../assets/banners/banner3.png';
 
 import './styles.css';
+import styles from './styles.module.css';
+import { TextField } from '@mui/material';
 
-const data = [
-    'Hola 1',
-    'Hola 10',
-    'Hola 2',
-    'Hola 3',
-    'Hola 4',
-    'Hola 5',
+const serviceTypeList = [
+    'Venta',
+    'Arriendo'
 ];
 
 export const Home = () => {
-  const [value, setValue] = useState('');
-  console.log({ value })
+  const [serviceType, setServiceType] = useState('');
+  const [code, setCode] = useState('');
+  console.log({ serviceType, code })
 
   return (
     <div style={{ marginTop: 70 }}>
@@ -47,12 +46,38 @@ export const Home = () => {
             <SwiperSlide><img src={banner3} alt="Banner 3" /></SwiperSlide>
         </Swiper>
 
-        <AutocompleteInput
-            data={data}
-            label='Buscar datos'
-            value={value}
-            setValue={setValue}
-        />
+        <div className={styles['centered']}>
+            <div className={styles['search-container']}>
+                <p className={styles['title-search']}>Encuentra tu próximo inmueble</p>
+
+                <div className={styles['inputs-container']}>
+                    <div className={styles['input']}>
+                        <AutocompleteInput
+                            data={serviceTypeList}
+                            label='Tipo de servicio'
+                            value={serviceType}
+                            setValue={setServiceType}
+                        />
+                    </div>
+                    <div className={styles['input']}>
+                        <TextField 
+                            id="outlined-basic" 
+                            label="Código de Inmueble" 
+                            variant="outlined" 
+                            value={code} 
+                            onChange={
+                                (event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setCode(event?.target?.value);
+                                }
+                            }
+                            style={{ width: '100%' }}
+                        />
+                    </div>
+                </div>
+
+                <button className={styles['btn-search']}>Buscar</button>
+            </div>
+        </div>
     </div>
   )
 }
