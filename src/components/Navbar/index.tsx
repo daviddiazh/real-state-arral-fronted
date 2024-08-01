@@ -24,7 +24,7 @@ export const Navbar = () => {
                             </Link>
 
                             <div className={styles['child-container']}>
-                                <Link to='/payments' className={styles.item}>
+                                <Link to='https://www.mipagoamigo.com/MPA_WebSite/ServicePayments/StartPayment?id=7653&searchedCategoryId=&searchedAgreementName=ARRENDAMIENTOS' target='_blank' className={styles.item}>
                                     <p className={styles.text}>Pagos</p>
                                 </Link>
                                 <Link to='/search/all/all' className={styles.item}>
@@ -73,16 +73,33 @@ export const Navbar = () => {
                                             />
                                         </div>
                                         <div className={styles['child-container-mobile']}>
-                                            <Link to='/payments' className={styles.item}>
+                                            <Link 
+                                                to='https://www.mipagoamigo.com/MPA_WebSite/ServicePayments/StartPayment?id=7653&searchedCategoryId=&searchedAgreementName=ARRENDAMIENTOS' 
+                                                target='_blank' 
+                                                className={styles.item} 
+                                                onClick={() => setIsOpen(false)}
+                                            >
                                                 <p className={styles.text}>Pagos</p>
                                             </Link>
-                                            <Link to='/search/all/all' className={styles.item}>
+                                            <Link 
+                                                to='/search/all/all' 
+                                                className={styles.item} 
+                                                onClick={() => setIsOpen(false)}
+                                            >
                                                 <p className={styles.text}>Inmuebles</p>
                                             </Link>
-                                            <Link to='/contact' className={styles.item}>
+                                            <Link 
+                                                to='/contact' 
+                                                className={styles.item} 
+                                                onClick={() => setIsOpen(false)}
+                                            >
                                                 <p className={styles.text}>Contacto</p>
                                             </Link>
-                                            <Link to='/about' className={styles.item}>
+                                            <Link 
+                                                to='/about' 
+                                                className={styles.item}
+                                                onClick={() => setIsOpen(false)}
+                                            >
                                                 <p className={styles.text}>Sobre Nosotros</p>
                                             </Link>
                                         </div>
