@@ -1,5 +1,5 @@
 .margin-top {
-    margin-top: 66px;
+    margin-top: 80px;
 }
 
 .title-estates {
@@ -55,5 +55,11 @@
 
     .grid-container {
         padding: 10px 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .margin-top {
+        margin-top: 70px;
     }
 }

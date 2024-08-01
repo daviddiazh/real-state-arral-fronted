@@ -7,6 +7,7 @@ import axios from 'axios';
 import { Map, Marker } from "pigeon-maps"
 import { TextField } from '@mui/material';
 import { AutocompleteInput } from "../../components/Autocomplete";
+import { Link } from 'react-router-dom';
 
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -81,7 +82,7 @@ export const Home = () => {
             <div className={styles['search-container']}>
                 <div className={styles['flex']}>
                     <Icon name='casa-03' size={17} />
-                    <p className={styles['title-search']}>¡Encuentra tu próximo inmueble aquí!</p>
+                    <h1 className={styles['title-search']}>¡Encuentra tu próximo inmueble aquí!</h1>
                 </div>
 
                 <div className={styles['inputs-container']}>
@@ -141,11 +142,53 @@ export const Home = () => {
             }
         </div>
         
-        <p className={styles['generic-title']}>Sobre Nosotros</p>
-        {/* //TODO! */}
-        <Map height={300} defaultCenter={[6.156444, -75.581777]} defaultZoom={15}>
-            <Marker width={50} anchor={[6.156444, -75.581777]} />
-        </Map>
+        <div id='about' style={{ marginTop: 15 }}>
+            <p  className={styles['generic-title']}>Sobre Nosotros</p>
+
+            <div className={styles['container-about']}>
+                <div className={styles['container-about-child1']}>
+                    <div className={styles['container-about-info']}>
+                        <Icon name='phone' />
+                        <p className={styles['text-about-info']}>PBX: (604) 448 97 98</p>
+                    </div>
+                    <div className={styles['container-about-info']}>
+                        <Icon name='phone' />
+                        <p className={styles['text-about-info']}>315 709 0869 - 318 405 2662</p>
+                    </div>
+                    <div className={styles['container-about-info']}>
+                        <Icon name='mail-01' />
+                        <Link to='mailto:info@arrendamientosalvarez.com'>
+                            <p 
+                                className={styles['text-about-info']}
+                                style={{ textDecoration: 'underline', textDecorationColor: '#00AEEF' }}
+                            >
+                                info@arrendamientosalvarez.com
+                            </p>
+                        </Link>
+                    </div>
+                    <div className={styles['container-about-info']}>
+                        <Icon name='marker-pin-06' />
+                        <div>
+                            <p className={styles['text-about-info']}>Carrera 49 # 52-141 Medellin, Antioquia.</p>
+                            <p className={styles['text-about-info']}>(pasaje Junin Maracaibo Of. 301)</p>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles['container-about-child2']}>
+                    <Map
+                        height={300} 
+                        defaultCenter={[6.251070586444387, -75.56584172019515]} 
+                        defaultZoom={19}
+                    >
+                        <Marker width={50} anchor={[6.251070586444387, -75.56584172019515]} />
+                    </Map>
+                </div>
+            </div>
+        </div>
+
+        <div id='contact'>
+            <p  className={styles['generic-title']}>Contacto</p>
+        </div>
     </div>
   )
 }

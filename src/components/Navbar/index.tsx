@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Drawer } from '@mui/material';
+import { Link as ScrollLink } from 'react-scroll';
 import { Icon } from '../Icon/index';
-import styles from './styles.module.css';
 import logo from '../../assets/logo-completo.png';
+import styles from './styles.module.css';
 
 export const Navbar = () => {
 
@@ -33,9 +34,10 @@ export const Navbar = () => {
                                 <Link to='/contact' className={styles.item}>
                                     <p className={styles.text}>Contacto</p>
                                 </Link>
-                                <Link to='/about' className={styles.item}>
+                                {/* <Link to='/about' className={styles.item}>
                                     <p className={styles.text}>Sobre Nosotros</p>
-                                </Link>
+                                </Link> */}
+                                <ScrollLink smooth={true} duration={500} to="about" className={styles.item}><p className={styles.text}>Sobre Nosotros</p></ScrollLink>
                             </div>
                         </div>
                     </div>
@@ -96,7 +98,7 @@ export const Navbar = () => {
                                                 <p className={styles.text}>Contacto</p>
                                             </Link>
                                             <Link 
-                                                to='/about' 
+                                                to='#about' 
                                                 className={styles.item}
                                                 onClick={() => setIsOpen(false)}
                                             >
