@@ -13,7 +13,7 @@ export const AutocompleteInput = ({
             freeSolo
             disableClearable
             options={data.map((option) => option)}
-            onChange={(event: any, newValue: string | null) => {
+            onChange={(_: any, newValue: string | null) => {
                 setValue(newValue);
             }}
             defaultValue="Cualquiera"
