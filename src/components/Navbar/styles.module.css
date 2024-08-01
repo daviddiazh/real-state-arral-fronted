@@ -39,7 +39,8 @@
 }
 
 .logo {
-    width: 150px;
+    /* width: 150px; */
+    width: 115px;
     background-color: #fff;
     margin: 0;
     padding: 0;
