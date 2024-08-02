@@ -64,7 +64,7 @@ export const Estate = ({ estate }: any) => {
                     <Link to={`/detail/${estate?.consecutivo}`}>
                         <div className={styles['flex-child']}>
                             <p className={styles['text-info']}>Más info</p>
-                            <Icon name='flecha-izquierda' size={16} />
+                            <Icon name='flecha-izquierda' size={15} />
                         </div>
                     </Link>
                 </div>
