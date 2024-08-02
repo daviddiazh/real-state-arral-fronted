@@ -27,6 +27,8 @@ import { Loading } from '../../components/Loading';
 import { IEstate } from '../../interfaces/estate';
 import styles from './styles.module.css';
 import './styles.css';
+import { WhatsappButton } from '../../components/WhatsAppButton';
+import { PseButton } from '../../components/PseButton';
 
 const serviceTypeList = [
     'Cualquiera',
@@ -206,6 +208,9 @@ export const Home = () => {
         <div id='contact'>
             <p  className={styles['generic-title']}>Contacto</p>
         </div>
+
+        <WhatsappButton />
+        <PseButton />
     </div>
   )
 }
