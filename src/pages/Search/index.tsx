@@ -9,6 +9,7 @@ import { Loading } from '../../components/Loading';
 import { Error } from '../../components/Error';
 import { IEstate } from '../../interfaces/estate';
 import { useEffect, useState } from 'react';
+import { Icon } from '../../components/Icon';
 
 export const Search = () => {
 
@@ -48,13 +49,25 @@ export const Search = () => {
                     ))
                 }
             </div>
+            <div>
+                {
+                    !isFetching && estates?.data?.length === 0 && (
+                        <div>
+                            <div className={styles['no-data-container']}>
+                                <Icon name='alerta' color='#ffc107' />
+                                <p style={{ color: '#333', fontWeight: 600 }}>No hay inmuebles para mostrar.</p>
+                            </div>
+                        </div>
+                    )
+                }
+            </div>
             <div style={{ padding: '25px 15px' }}>
                 {
                     !isFetching && estates?.data && (
-                        <div>
+                        <>
                             <div className={styles['container-btns']}>
                                 {
-                                    page > 1 ? (
+                                    page > 1 && code === 'all' ? (
                                         <button 
                                             disabled={isFetching} 
                                             onClick={() => setPage(page - 1)}
@@ -64,17 +77,21 @@ export const Search = () => {
                                         </button>
                                     ) : <div />
                                 }
-                                <button 
-                                    disabled={isFetching} 
-                                    onClick={() => setPage(page + 1)}
-                                    className={styles['btn']}
-                                >
-                                    <p className={styles['text-btn']}>Pág. Siguiente ({page + 1})</p>
-                                </button>
+                                {
+                                    estates?.data?.length >= 1 && (
+                                        <button 
+                                            disabled={isFetching || estates?.data?.length === 0}
+                                            onClick={() => setPage(page + 1)}
+                                            className={styles['btn']}
+                                        >
+                                            <p className={styles['text-btn']}>Pág. Siguiente ({page + 1})</p>
+                                        </button>
+                                    )
+                                }
                             </div>
 
                             <p>Página actual {page}</p>
-                        </div>
+                        </>
                     )
                 }
             </div>

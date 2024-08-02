@@ -22,6 +22,14 @@
     padding-bottom: 15px;
 }
 
+.no-data-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 25px 0px;
+}
+
 .container-btns {
     display: flex;
     justify-content: space-between;
