@@ -29,6 +29,7 @@ import styles from './styles.module.css';
 import './styles.css';
 import { WhatsappButton } from '../../components/WhatsAppButton';
 import { PseButton } from '../../components/PseButton';
+import { useForm } from '../../hooks/useForm';
 
 const serviceTypeList = [
     'Cualquiera',
@@ -40,6 +41,14 @@ export const Home = () => {
 
   const [serviceType, setServiceType] = useState('');
   const [code, setCode] = useState('');
+
+  const { name, phone, email, matter, message, onInputChange } = useForm({
+    name: '',
+    phone: '',
+    email: '',
+    matter: '',
+    message: '',
+  });
 
   const navigate = useNavigate();
   
@@ -167,15 +176,15 @@ export const Home = () => {
             <div className={styles['container-about']}>
                 <div className={styles['container-about-child1']}>
                     <div className={styles['container-about-info']}>
-                        <Icon name='phone' />
+                        <Icon name='phone' size={16} />
                         <p className={styles['text-about-info']}>PBX: (604) 448 97 98</p>
                     </div>
                     <div className={styles['container-about-info']}>
-                        <Icon name='phone' />
+                        <Icon name='phone' size={16} />
                         <p className={styles['text-about-info']}>315 709 0869 - 318 405 2662</p>
                     </div>
                     <div className={styles['container-about-info']}>
-                        <Icon name='mail-01' />
+                        <Icon name='mail-01' size={16} />
                         <Link to='mailto:info@arrendamientosalvarez.com'>
                             <p 
                                 className={styles['text-about-info']}
@@ -186,7 +195,7 @@ export const Home = () => {
                         </Link>
                     </div>
                     <div className={styles['container-about-info']}>
-                        <Icon name='marker-pin-06' />
+                        <Icon name='marker-pin-06' size={16} />
                         <div>
                             <p className={styles['text-about-info']}>Carrera 49 # 52-141 Medellin, Antioquia.</p>
                             <p className={styles['text-about-info']}>(pasaje Junin Maracaibo Of. 301)</p>
@@ -206,7 +215,113 @@ export const Home = () => {
         </div>
 
         <div id='contact'>
-            <p  className={styles['generic-title']}>Contacto</p>
+            <p className={styles['generic-title']}>Contacto</p>
+
+            <div className={styles['centered']}>
+                <div className={styles['search-container']}>
+                    <div className={styles['flex']}>
+                        <Icon name='mail-01' size={17} />
+                        <h1 className={styles['title-search']}>¡Envíanos un mensaje!</h1>
+                    </div>
+
+                    <div className={styles['inputs-container-contact']}>
+                        <div className={styles['input-contact']}>
+                            <div>
+                                <TextField 
+                                    id="outlined-basic" 
+                                    label="Nombre" 
+                                    variant="outlined" 
+                                    value={name}
+                                    name='name'
+                                    onChange={
+                                        (event: React.ChangeEvent<HTMLInputElement>) => {
+                                            onInputChange(event)
+                                        }
+                                    }
+                                    style={{ width: '100%', margin: '5px 0' }}
+                                    autoComplete='off'
+                                />
+                            </div>
+                            <div>
+                                <TextField 
+                                    id="outlined-basic" 
+                                    label="Télefono" 
+                                    variant="outlined" 
+                                    value={phone} 
+                                    name='phone'
+                                    onChange={
+                                        (event: React.ChangeEvent<HTMLInputElement>) => {
+                                            onInputChange(event)
+                                        }
+                                    }
+                                    style={{ width: '100%', margin: '5px 0' }}
+                                    autoComplete='off'
+                                />
+                            </div>
+                        </div>
+                        <div className={styles['input-contact']}>
+                            <div>
+                                <TextField 
+                                    id="outlined-basic" 
+                                    label="Correo Electrónico" 
+                                    variant="outlined" 
+                                    value={email}
+                                    name='email'
+                                    onChange={
+                                        (event: React.ChangeEvent<HTMLInputElement>) => {
+                                            onInputChange(event)
+                                        }
+                                    }
+                                    style={{ width: '100%', margin: '5px 0' }}
+                                    autoComplete='off'
+                                />
+                            </div>
+                            <div>
+                                <TextField 
+                                    id="outlined-basic" 
+                                    label="Asunto" 
+                                    variant="outlined" 
+                                    value={matter}
+                                    name='matter' 
+                                    onChange={
+                                        (event: React.ChangeEvent<HTMLInputElement>) => {
+                                            onInputChange(event)
+                                        }
+                                    }
+                                    style={{ width: '100%', margin: '5px 0' }}
+                                    autoComplete='off'
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles['input-contact-full']}>
+                        <TextField 
+                            id="outlined-basic" 
+                            label="Mensaje" 
+                            variant="outlined" 
+                            value={message}
+                            name='message' 
+                            onChange={
+                                (event: React.ChangeEvent<HTMLInputElement>) => {
+                                    onInputChange(event)
+                                }
+                            }
+                            style={{ width: '100%', margin: '5px 0' }}
+                            autoComplete='off'
+                            multiline
+                            rows={4}
+                        />
+                    </div>
+
+                    <button 
+                        className={styles['btn-search']}
+                        onClick={() => console.log('click')}
+                    >
+                        <p>Envíar</p>
+                        <Icon name='send-03' color='#fff' size={15} />
+                    </button>
+                </div>
+            </div>
         </div>
 
         <WhatsappButton />
