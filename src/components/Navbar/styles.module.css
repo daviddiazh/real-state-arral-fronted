@@ -95,7 +95,7 @@
     .container-mobile {
         background-color: #fff;
         width: 100%;
-        z-index: 999;
+        z-index: 999999999;
     }
 
     .btn-close {

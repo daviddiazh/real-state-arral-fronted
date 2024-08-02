@@ -93,6 +93,7 @@ export const Navbar = () => {
                                         anchor='right'
                                         open={true}
                                         onClose={() => setIsOpen(!isOpen)}
+                                        style={{ zIndex: 999999999999999 }}
                                     >
                                         <div onClick={() => setIsOpen(!isOpen)} className={styles['btn-close']}>
                                             <Icon name='x' />
