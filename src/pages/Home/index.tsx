@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { Map, Marker } from "pigeon-maps"
 import { TextField } from '@mui/material';
+import { scroller } from 'react-scroll';
 import { AutocompleteInput } from "../../components/Autocomplete";
 import { Link } from 'react-router-dom';
 
@@ -15,18 +16,17 @@ import 'swiper/css/autoplay';
 import 'swiper/css';
 
 import banner1 from '../../assets/banners/banner1.jpg';
-import banner2 from '../../assets/banners/banner2.jpg';
+import banner2 from '../../assets/banners/banner2.png';
 import banner3 from '../../assets/banners/banner3.png';
 
-import './styles.css';
-import styles from './styles.module.css';
 import { Icon } from '../../components/Icon';
 import { Estate } from '../../components/Estate';
 import { baseURL, password, user } from '../../utils/const';
 import { Error } from '../../components/Error';
 import { Loading } from '../../components/Loading';
 import { IEstate } from '../../interfaces/estate';
-import { Element, scroller } from 'react-scroll';
+import styles from './styles.module.css';
+import './styles.css';
 
 const serviceTypeList = [
     'Cualquiera',
@@ -69,6 +69,7 @@ export const Home = () => {
             scroller.scrollTo(section, {
                 smooth: true,
                 duration: 500,
+                offset: -80,
             });
         }
     }, [location]);
@@ -87,6 +88,7 @@ export const Home = () => {
             autoplay={{
                 delay: 5000,
             }}
+            loop={true}
         >
             <SwiperSlide><img src={banner1} alt="Banner 1" /></SwiperSlide>
             <SwiperSlide><img src={banner2} alt="Banner 2" /></SwiperSlide>
@@ -157,7 +159,7 @@ export const Home = () => {
             }
         </div>
         
-        <Element name='about' style={{ marginTop: 15 }}>
+        <div id='about' style={{ marginTop: 15 }}>
             <p className={styles['generic-title']}>Sobre Nosotros</p>
 
             <div className={styles['container-about']}>
@@ -199,7 +201,7 @@ export const Home = () => {
                     </Map>
                 </div>
             </div>
-        </Element>
+        </div>
 
         <div id='contact'>
             <p  className={styles['generic-title']}>Contacto</p>

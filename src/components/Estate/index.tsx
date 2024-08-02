@@ -27,6 +27,7 @@ export const Estate = ({ estate }: any) => {
                     autoplay={{
                         delay: 5000,
                     }}
+                    loop={true}
                 >
                     {estate.imagenes.map((image: any) => (
                         <SwiperSlide 
