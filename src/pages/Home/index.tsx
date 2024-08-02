@@ -206,7 +206,7 @@ export const Home = () => {
                     <Map
                         height={300} 
                         defaultCenter={[6.251070586444387, -75.56584172019515]} 
-                        defaultZoom={19}
+                        defaultZoom={13.5}
                     >
                         <Marker width={50} anchor={[6.251070586444387, -75.56584172019515]} />
                     </Map>
