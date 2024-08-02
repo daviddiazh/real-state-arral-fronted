@@ -8,21 +8,22 @@ import styles from './styles.module.css';
 import { Loading } from '../../components/Loading';
 import { Error } from '../../components/Error';
 import { IEstate } from '../../interfaces/estate';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Search = () => {
 
+  const [page, setPage] = useState(1);
   const { serviceType = 'all', code = 'all' } = useParams();
 
-  const { data: estates, error, isLoading } = useQuery({ queryKey: ['search'], queryFn: async () => {
+  const { data: estates, error, isFetching, refetch } = useQuery({ queryKey: ['search'], queryFn: async () => {
     if (serviceType === 'all' && code.length > 1) {
-        return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=10&pagina=1&codigo=${code}`);
+        return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=12&pagina=${page}&codigo=${code}`);
     } else if (serviceType !== 'all' && code === 'all') {
-        return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=10&pagina=1&destinacion=${serviceType}`);
+        return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=12&pagina=${page}&destinacion=${serviceType}`);
     } else if (serviceType !== 'all' && code !== 'all') {
-        return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=10&pagina=1&codigo=${code}&destinacion=${serviceType}`);
+        return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=12&pagina=${page}&codigo=${code}&destinacion=${serviceType}`);
     } else {
-        return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=10&pagina=1`);
+        return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=12&pagina=${page}`);
     }
   } });
 
@@ -33,16 +34,13 @@ export const Search = () => {
     });
   }, []);
 
+  useEffect(() => {
+    refetch();
+  }, [page]);
+
   return (
         <div className={styles['margin-top']}>
-            <p className={styles['title-estates']}>Busqueda</p>
-            {
-                isLoading && (
-                    <div style={{ margin: '50px 0' }}>
-                        <Loading />
-                    </div>
-                )
-            }
+            <p className={styles['title-estates']}>Busqueda de Inmuebles</p>
             <div className={styles['grid-container']}>
                 {
                     estates?.data && estates?.data?.map((estate: IEstate) => (
@@ -50,6 +48,43 @@ export const Search = () => {
                     ))
                 }
             </div>
+            <div style={{ padding: '25px 15px' }}>
+                {
+                    !isFetching && estates?.data && (
+                        <div>
+                            <div className={styles['container-btns']}>
+                                {
+                                    page > 1 ? (
+                                        <button 
+                                            disabled={isFetching} 
+                                            onClick={() => setPage(page - 1)}
+                                            className={styles['btn']}
+                                        >
+                                            <p className={styles['text-btn']}>Pág. Anterior ({page - 1})</p>
+                                        </button>
+                                    ) : <div />
+                                }
+                                <button 
+                                    disabled={isFetching} 
+                                    onClick={() => setPage(page + 1)}
+                                    className={styles['btn']}
+                                >
+                                    <p className={styles['text-btn']}>Pág. Siguiente ({page + 1})</p>
+                                </button>
+                            </div>
+
+                            <p>Página actual {page}</p>
+                        </div>
+                    )
+                }
+            </div>
+            {
+                isFetching && (
+                    <div style={{ margin: '50px 0' }}>
+                        <Loading />
+                    </div>
+                )
+            }
             {
                 error?.message && <Error />
             }

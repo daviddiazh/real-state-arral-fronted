@@ -22,6 +22,35 @@
     padding-bottom: 15px;
 }
 
+.container-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 25px 0px;
+}
+
+.btn {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    background-color: #00AEEF;
+}
+
+.text-btn {
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    color: #333;
+    color: #fff;
+    font-weight: 600;
+}
+
 @media (max-width: 1290px) {
     .title-estates {
         padding: 10px 20px;
@@ -55,6 +84,13 @@
 
     .grid-container {
         padding: 10px 15px;
+    }
+
+    .container-btns {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
     }
 }
 
