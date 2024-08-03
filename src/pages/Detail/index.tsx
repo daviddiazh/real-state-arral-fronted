@@ -12,12 +12,13 @@ import { ImageZoom } from "../../components/ImageZoom";
 import { Contact } from "../../components/Contact";
 import { copFormatter } from "../../utils/copFormatter";
 import WhatsAppIcon from '../../assets/icons/wpp.svg';
+import { Icon } from "../../components/Icon";
+import { handleWhatsAppClick } from "../../utils/handleWhatsAppMessage";
 
 import 'swiper/css/navigation';
 import 'swiper/css';
 import styles from './styles.module.css';
 import '../../pages/Home/styles.css';
-import { Icon } from "../../components/Icon";
 
 export const Detail = () => {
 
@@ -89,6 +90,10 @@ export const Detail = () => {
                                     <p className={styles['resumen']}>{estate?.resumen?.length < 5 ? 'Este inmueble no tiene una descripción.' : estate?.resumen}</p>
 
                                     <table className={styles['table']}>
+                                        <tr>
+                                            <td className={styles['title-row']}>Área</td>
+                                            <td className={styles['data-row']}>{estate?.area}m<sup>2</sup></td>
+                                        </tr>
                                         <tr>
                                             <td className={styles['title-row']}>Sala</td>
                                             <td 
@@ -171,7 +176,10 @@ export const Detail = () => {
                                         </p>
 
                                         <div className={styles['btn-container']}>
-                                            <button className={styles['btn-info']}>
+                                            <button 
+                                                className={styles['btn-info']}
+                                                onClick={() => handleWhatsAppClick()}
+                                            >
                                                 <p>Pregúntanos por WhatsApp</p>
                                                 <img src={WhatsAppIcon} alt="WhatsApp icon" className={styles['wpp-icon']} />
                                             </button>
@@ -194,6 +202,10 @@ export const Detail = () => {
                             <p className={styles['resumen']}>{estate?.resumen?.length < 5 ? 'Este inmueble no tiene una descripción.' : estate?.resumen}</p>
 
                             <table className={styles['table']}>
+                                <tr>
+                                    <td className={styles['title-row']}>Área</td>
+                                    <td className={styles['data-row']}>{estate?.area}m<sup>2</sup></td>
+                                </tr>
                                 <tr>
                                     <td className={styles['title-row']}>Sala</td>
                                     <td 
