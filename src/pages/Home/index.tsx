@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Mousewheel, Keyboard, Autoplay } from 'swiper/modules';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+// import { useQuery } from '@tanstack/react-query';
+// import axios from 'axios';
 import { Map, Marker } from "pigeon-maps"
 import { TextField } from '@mui/material';
 import { scroller } from 'react-scroll';
@@ -20,11 +20,11 @@ import banner2 from '../../assets/banners/banner2.png';
 import banner3 from '../../assets/banners/banner3.png';
 
 import { Icon } from '../../components/Icon';
-import { Estate } from '../../components/Estate';
-import { baseURL, password, user } from '../../utils/const';
-import { Error } from '../../components/Error';
-import { Loading } from '../../components/Loading';
-import { IEstate } from '../../interfaces/estate';
+// import { Estate } from '../../components/Estate';
+// import { baseURL, password, user } from '../../utils/const';
+// import { Error } from '../../components/Error';
+// import { Loading } from '../../components/Loading';
+// import { IEstate } from '../../interfaces/estate';
 import styles from './styles.module.css';
 import './styles.css';
 import { WhatsappButton } from '../../components/WhatsAppButton';
@@ -59,9 +59,9 @@ export const Home = () => {
     return navigate(url);
   }
 
-  const { data: estates, error, isLoading } = useQuery({ queryKey: ['starred-estates'], queryFn: async () => {
-    return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=4&pagina=1`);
-  } });
+//   const { data: estates, error, isLoading } = useQuery({ queryKey: ['starred-estates'], queryFn: async () => {
+//     return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=4&pagina=1`);
+//   } });
 
   const location = useLocation();
 
@@ -104,7 +104,7 @@ export const Home = () => {
             </SwiperSlide>
         </Swiper>
 
-        {/* <div className={styles['centered']}>
+        <div className={styles['centered']}>
             <div className={styles['search-container']}>
                 <div className={styles['flex']}>
                     <Icon name='casa-03' size={17} />
@@ -147,7 +147,7 @@ export const Home = () => {
             </div>
         </div>
 
-        <div>
+        {/* <div>
             <p className={styles['generic-title']}>Inmuebles Destacados</p>
             {
                 isLoading && (
@@ -166,7 +166,7 @@ export const Home = () => {
             {
                 error?.message && <Error />
             }
-        </div>
+        </div> */}
         
         <div id='about' style={{ marginTop: 15 }}>
             <p className={styles['generic-title']}>Sobre Nosotros</p>
@@ -227,7 +227,7 @@ export const Home = () => {
         </div>
 
         <WhatsappButton />
-        <PseButton /> */}
+        <PseButton />
     </div>
   )
 }
