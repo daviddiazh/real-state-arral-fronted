@@ -104,7 +104,7 @@ export const Home = () => {
             </SwiperSlide>
         </Swiper>
 
-        <div className={styles['centered']}>
+        {/* <div className={styles['centered']}>
             <div className={styles['search-container']}>
                 <div className={styles['flex']}>
                     <Icon name='casa-03' size={17} />
@@ -227,7 +227,7 @@ export const Home = () => {
         </div>
 
         <WhatsappButton />
-        <PseButton />
+        <PseButton /> */}
     </div>
   )
 }
