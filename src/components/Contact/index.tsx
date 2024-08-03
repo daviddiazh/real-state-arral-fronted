@@ -48,6 +48,7 @@ export const Contact = () => {
                                     variant="outlined" 
                                     value={phone} 
                                     name='phone'
+                                    type='number'
                                     onChange={
                                         (event: React.ChangeEvent<HTMLInputElement>) => {
                                             onInputChange(event)
@@ -66,6 +67,7 @@ export const Contact = () => {
                                     variant="outlined" 
                                     value={email}
                                     name='email'
+                                    type='email'
                                     onChange={
                                         (event: React.ChangeEvent<HTMLInputElement>) => {
                                             onInputChange(event)
