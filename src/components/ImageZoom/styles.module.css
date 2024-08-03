@@ -1,0 +1,27 @@
+.container {
+    position: relative;
+    display: block;
+    /* width: 100%; */
+    max-width: 500px;
+    height: 500px;
+    overflow: hidden;
+    border: none;
+    border-radius: 8px;
+}
+  
+.source {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+  
+.zoom-lens {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: 230%;
+}

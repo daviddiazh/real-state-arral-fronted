@@ -4,7 +4,7 @@ import { Drawer } from '@mui/material';
 import { animateScroll as scroll } from 'react-scroll';
 import { Icon } from '../Icon/index';
 // import logo from '../../assets/logo-completo.png';
-import logo from '../../assets/logo-completo1.png';
+import logo from '../../assets/logo-completo2.png';
 import styles from './styles.module.css';
 
 export const Navbar = () => {

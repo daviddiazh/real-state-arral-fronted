@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 // import fbLogo from '../../assets/icons/fb.svg';
 // import igLogo from '../../assets/icons/ig.svg';
 // import xLogo from '../../assets/icons/x.svg';
-import logo from '../../assets/logo-completo1.png';
+import logo from '../../assets/logo-completo2.png';
 import styles from './styles.module.css';
 
 export const Footer = () => {

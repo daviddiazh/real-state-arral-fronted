@@ -1,10 +1,233 @@
 .margin-top {
-    margin-top: 80px;
+    margin-top: 95px;
 }
 
+.mySwiper {
+    max-width: 500px;
+    height: 75px;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    width: 50px;  /* Cambia el ancho de la flecha */
+    height: 50px; /* Cambia el alto de la flecha */
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+  
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 30px; /* Cambia el tamaño de la flecha */
+}
+
+
+.container-header-images {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.child1 {
+    width: 60%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.container-images {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+}
+
+.child2 {
+    width: 40%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border: 1px solid #dcdada;
+    border-radius: 8px;
+    padding: 20px 0;
+}
+
+.code-label {
+    margin: 0;
+    padding: 0 0 10px 0;
+    text-align: left;
+    font-size: 15px;
+    color: #5b5b5b;
+}
+
+.code-text {
+    margin: 0;
+    padding: 10px 0;
+    text-align: left;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+.class-text {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 20px;
+    color: #333;
+    font-weight: 500;
+}
+
+.city {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 16px;
+    color: #5b5b5b;
+    font-weight: 500;
+}
+
+.price {
+    margin: 0;
+    padding: 25px 0;
+    padding: 10px 0;
+    text-align: left;
+    font-size: 28px;
+    color: #333;
+    font-weight: 600;
+}
+
+.management-label {
+    margin: 0;
+    padding: 20px 0;
+    padding: 10px 0;
+    text-align: left;
+    font-size: 18px;
+    color: #333;
+    font-weight: 400;
+}
+
+.management-text {
+    margin: 0;
+    padding: 25px 0;
+    padding: 10px 0;
+    text-align: left;
+    font-size: 20px;
+    color: #333;
+    font-weight: 500;
+    padding-left: 5px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.btn-info {
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #32ba46;
+    width: 75%;
+    border-radius: 50px;
+    color: #fff;
+    font-weight: 600px;
+    font-size: 18px;
+    padding: 0px 25px;
+}
+
+.wpp-icon {
+    width: 40px;
+    padding: 0px ;
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    .margin-top {
+        margin-top: 70px;
+    }
+
+    .mySwiper {
+        /* max-width: 100%; */
+        justify-content: center;
+    }
+
+    .container-header-images {
+        width: 100%;
+        display: block;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    
+    .child1 {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    
+    .child2 {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        border: none;
+    }
+}
 
 @media (max-width: 600px) {
     .margin-top {
         margin-top: 70px;
+    }
+
+    .mySwiper {
+        max-width: 350px;
+    }
+
+    .container-images {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .child2 {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        border: none;
+    }
+
+    .code-label, .code-text {
+        padding: 0;
+        margin: 0;
+    }
+
+    .padding-left {
+        padding: 10px 15px;
+    }
+
+    .btn-info {
+        width: 100%;
+    }
+}
+
+@media (max-width: 342px) {
+    .mySwiper {
+        max-width: 300px;
     }
 }

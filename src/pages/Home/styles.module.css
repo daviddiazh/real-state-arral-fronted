@@ -123,20 +123,35 @@
     font-weight: 500;
 }
 
-.inputs-container-contact {
-    width: 100%;
+.contact-container {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 10px;
-}
-
-.input-contact {
-    width: 50%;
-}
-
-.input-contact-full {
+    justify-content: flex-start;
     width: 100%;
+    gap: 15px;
+}
+
+.message-container {
+    width: 35%;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
+    padding-top: 10px;
+}
+
+.message {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+}
+
+.form-container {
+    width: 63%;
 }
 
 
@@ -168,6 +183,26 @@
     
     .container-about-child1,.container-about-child2 {
         width: 92%;
+    }
+
+    .message-container {
+        width: 100%;
+    }
+    
+    .form-container {
+        width: 100%;
+    }
+
+    .contact-container {
+        display: block;
+    }
+
+    .message-container {
+        width: 100%;
+    }
+
+    .form-container {
+        width: 100%;
     }
 }
 
@@ -214,17 +249,7 @@
         align-items: center;
         justify-content: flex-start;
         gap: 10px;
-        padding: 5px 10px;
-    }
-
-    .inputs-container-contact {
-        width: 100%;
-        display: block;
-        gap: 10px;
-    }
-
-    .input-contact {
-        width: 100%;
+        padding: 5px 15px;
     }
 
     .text-about-info {
@@ -239,6 +264,19 @@
     .container-about-child1 {
         margin-top: 10px;
         margin-bottom: 20px;
+    }
+
+    .title {
+        font-size: 23px;
+        font-weight: 600;
+    }
+
+    .message {
+        font-size: 15px;
+        font-weight: 500;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 15px;
     }
 }
 

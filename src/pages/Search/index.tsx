@@ -10,6 +10,8 @@ import { Error } from '../../components/Error';
 import { IEstate } from '../../interfaces/estate';
 import { useEffect, useState } from 'react';
 import { Icon } from '../../components/Icon';
+import { WhatsappButton } from '../../components/WhatsAppButton';
+import { PseButton } from '../../components/PseButton';
 
 export const Search = () => {
 
@@ -105,6 +107,9 @@ export const Search = () => {
             {
                 error?.message && <Error />
             }
+
+            <WhatsappButton />
+            <PseButton />
         </div>
     )
 }
