@@ -9,7 +9,7 @@ export const Footer = () => {
             <div className={styles['second-container']}>
                 <div className={styles['icons-rrss-container']}>
                     <Link to='/'>
-                        <img src={logo} alt="x logo" width={130} />
+                        <img src={logo} alt="x logo" width={130} loading="lazy" />
                     </Link>
 
                 </div>
