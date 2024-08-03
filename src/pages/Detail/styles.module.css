@@ -38,6 +38,14 @@
     justify-content: space-between;
 }
 
+.container-center {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
 .child1 {
     width: 60%;
     display: flex;
@@ -55,13 +63,64 @@
     max-width: 500px;
 }
 
+.desktop {
+    display: block;
+    width: 100%;
+}
+
+.mobile {
+    display: none;
+    width: 100%;
+}
+
+.resumen-title {
+    text-align: left;
+    font-size: 19px;
+    font-weight: 600;
+    padding: 0 20px;
+    color: #000;
+}
+
+.resumen {
+    text-align: left;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 0 20px;
+    columns: #333;
+}
+
+.table {
+    width: 77%;
+    margin: 0 20px;
+}
+
+.title-row {
+    background-color: #ededed;
+    padding: 7px 20px;
+    text-align: left;
+    width: 50%;
+    color: #333;
+    font-weight: 600;
+    margin: 0;
+    border: none;
+}
+
+.data-row {
+    background-color: #fff;
+    padding: 7px 20px;
+    text-align: left;
+    width: 50%;
+    color: #333;
+    font-weight: 400;
+    margin: 0;
+    border: 1px solid #eee;
+}
+
 .child2 {
     width: 40%;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    border: 1px solid #dcdada;
-    border-radius: 8px;
     padding: 20px 0;
 }
 
@@ -143,11 +202,11 @@
     align-items: center;
     justify-content: space-between;
     background-color: #32ba46;
-    width: 75%;
+    width: 85%;
     border-radius: 50px;
     color: #fff;
     font-weight: 600px;
-    font-size: 18px;
+    font-size: 17px;
     padding: 0px 25px;
 }
 
@@ -157,7 +216,7 @@
     margin: 0;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 850px) {
     .margin-top {
         margin-top: 70px;
     }
@@ -187,6 +246,19 @@
         align-items: flex-start;
         justify-content: center;
         border: none;
+    }
+
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+        width: 100%;
+    }
+
+    .table {
+        width: 95%;
     }
 }
 
@@ -224,10 +296,18 @@
     .btn-info {
         width: 100%;
     }
+
+    .table {
+        width: 90%;
+    }
 }
 
 @media (max-width: 342px) {
     .mySwiper {
         max-width: 300px;
+    }
+
+    .table {
+        width: 87%;
     }
 }

@@ -17,6 +17,7 @@ import 'swiper/css/navigation';
 import 'swiper/css';
 import styles from './styles.module.css';
 import '../../pages/Home/styles.css';
+import { Icon } from "../../components/Icon";
 
 export const Detail = () => {
 
@@ -49,37 +50,86 @@ export const Detail = () => {
                 !isFetching && estate && (
                     <div>
                         <div className={styles['container-header-images']}>
-                            <div className={styles['child1']}>
-                                <div className={styles['container-images']}>
-                                    <ImageZoom image={image} />
-                                    <div>
-                                        <Swiper 
-                                            watchSlidesProgress={true} 
-                                            slidesPerView={7} 
-                                            className={styles['mySwiper']}
-                                            mousewheel
-                                            keyboard
-                                            modules={[Navigation, Pagination, Mousewheel, Keyboard, FreeMode]}
-                                            navigation
-                                            direction='horizontal'
-                                            freeMode={true} 
-                                        >
-                                            {
-                                                estate?.imagenes?.map((item: any, index: number) => (
-                                                    <SwiperSlide className={styles['swiper-slide']}>
-                                                        <img
-                                                            key={item?.fotourl+index}
-                                                            src={item?.fotourl} 
-                                                            alt="Foto del inmueble"
-                                                            ref={containerRef}
-                                                            onMouseMove={() => setImage(item?.fotourl)}
-                                                            onClick={() => setImage(item?.fotourl)}
-                                                        />
-                                                    </SwiperSlide>
-                                                ))
-                                            }
-                                        </Swiper>
+                            <div className={styles['container-center']}>
+                                <div className={styles['child1']}>
+                                    <div className={styles['container-images']}>
+                                        <ImageZoom image={image} />
+                                        <div>
+                                            <Swiper 
+                                                watchSlidesProgress={true} 
+                                                slidesPerView={7} 
+                                                className={styles['mySwiper']}
+                                                mousewheel
+                                                keyboard
+                                                modules={[Navigation, Pagination, Mousewheel, Keyboard, FreeMode]}
+                                                navigation
+                                                direction='horizontal'
+                                                freeMode={true} 
+                                            >
+                                                {
+                                                    estate?.imagenes?.map((item: any, index: number) => (
+                                                        <SwiperSlide className={styles['swiper-slide']}>
+                                                            <img
+                                                                key={item?.fotourl+index}
+                                                                src={item?.fotourl} 
+                                                                alt="Foto del inmueble"
+                                                                ref={containerRef}
+                                                                onMouseMove={() => setImage(item?.fotourl)}
+                                                                onClick={() => setImage(item?.fotourl)}
+                                                            />
+                                                        </SwiperSlide>
+                                                    ))
+                                                }
+                                            </Swiper>
+                                        </div>
                                     </div>
+                                </div>
+                                <div className={styles['desktop']}>
+                                    <p className={styles['resumen-title']}>Descripción</p>
+                                    <p className={styles['resumen']}>{estate?.resumen?.length < 5 ? 'Este inmueble no tiene una descripción.' : estate?.resumen}</p>
+
+                                    <table className={styles['table']}>
+                                        <tr>
+                                            <td className={styles['title-row']}>Sala</td>
+                                            <td 
+                                                className={styles['data-row']}
+                                            >
+                                                { 
+                                                    estate?.sala 
+                                                        ? <Icon name="check-02" color="#4caf50" /> 
+                                                        : <Icon name="x-circulo" color="#f44336" /> 
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td className={styles['title-row']}>Cocina</td>
+                                            <td className={styles['data-row']}>{ estate?.cocina ? estate?.cocina : '-' }</td>
+                                        </tr>
+                                        <tr>
+                                            <td className={styles['title-row']}>Baños</td>
+                                            <td className={styles['data-row']}>{ estate?.baños ? estate?.baños : '-' }</td>
+                                        </tr>
+                                        <tr>
+                                            <td className={styles['title-row']}>Baños con cabina</td>
+                                            <td 
+                                                className={styles['data-row']}
+                                            >
+                                                { 
+                                                    estate?.baño_Cabina 
+                                                        ? <Icon name="check-02" color="#4caf50" /> 
+                                                        : <Icon name="x-circulo" color="#f44336" /> 
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td className={styles['title-row']}>Patios</td>
+                                            <td className={styles['data-row']}>{ estate?.patios || estate?.patios >= 0 ? estate?.patios : '-' }</td>
+                                        </tr>
+                                        <tr>
+                                            <td className={styles['title-row']}>Sector</td>
+                                            <td className={styles['data-row']}>{ estate?.sector ? estate?.sector : '-' }</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                             <div className={styles['child2']}>
@@ -137,6 +187,54 @@ export const Detail = () => {
                                     <Contact />
                                 </div>
                             </div>
+                        </div>
+
+                        <div className={styles['mobile']}>
+                            <p className={styles['resumen-title']}>Descripción</p>
+                            <p className={styles['resumen']}>{estate?.resumen?.length < 5 ? 'Este inmueble no tiene una descripción.' : estate?.resumen}</p>
+
+                            <table className={styles['table']}>
+                                <tr>
+                                    <td className={styles['title-row']}>Sala</td>
+                                    <td 
+                                        className={styles['data-row']}
+                                    >
+                                        { 
+                                            estate?.sala 
+                                                ? <Icon name="check-02" color="#4caf50" /> 
+                                                : <Icon name="x-circulo" color="#f44336" /> 
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className={styles['title-row']}>Cocina</td>
+                                    <td className={styles['data-row']}>{ estate?.cocina ? estate?.cocina : '-' }</td>
+                                </tr>
+                                <tr>
+                                    <td className={styles['title-row']}>Baños</td>
+                                    <td className={styles['data-row']}>{ estate?.baños ? estate?.baños : '-' }</td>
+                                </tr>
+                                <tr>
+                                    <td className={styles['title-row']}>Baños con cabina</td>
+                                    <td 
+                                        className={styles['data-row']}
+                                    >
+                                        { 
+                                            estate?.baño_Cabina 
+                                                ? <Icon name="check-02" color="#4caf50" /> 
+                                                : <Icon name="x-circulo" color="#f44336" /> 
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className={styles['title-row']}>Patios</td>
+                                    <td className={styles['data-row']}>{ estate?.patios || estate?.patios >= 0 ? estate?.patios : '-' }</td>
+                                </tr>
+                                <tr>
+                                    <td className={styles['title-row']}>Sector</td>
+                                    <td className={styles['data-row']}>{ estate?.sector ? estate?.sector : '-' }</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 )
