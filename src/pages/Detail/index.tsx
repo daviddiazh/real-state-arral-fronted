@@ -89,7 +89,8 @@ export const Detail = () => {
                                                 modules={[Navigation, Pagination, Mousewheel, Keyboard, FreeMode]}
                                                 navigation
                                                 direction='horizontal'
-                                                freeMode={true} 
+                                                freeMode={true}
+                                                spaceBetween={5}
                                             >
                                                 {
                                                     estate?.imagenes?.map((item: any, index: number) => (

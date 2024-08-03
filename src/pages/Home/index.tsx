@@ -91,7 +91,7 @@ export const Home = () => {
             autoplay={{
                 delay: 5000,
             }}
-            loop={true}
+            // loop={true}
         >
             <SwiperSlide>
                 <img src={banner1} alt="Banner 1" width={800} loading="lazy" />
