@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { animateScroll as scroll } from 'react-scroll';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Mousewheel, Keyboard, FreeMode } from 'swiper/modules';
 import { Loading } from "../../components/Loading";
@@ -19,16 +20,28 @@ import 'swiper/css/navigation';
 import 'swiper/css';
 import styles from './styles.module.css';
 import '../../pages/Home/styles.css';
+import { IEstate } from "../../interfaces/estate";
+import { Estate } from "../../components/Estate";
+import { PseButton } from "../../components/PseButton";
+import { WhatsappButton } from "../../components/WhatsAppButton";
 
 export const Detail = () => {
 
     const { code = '' } = useParams();
 
-    const { data, error, isFetching } = useQuery({ queryKey: ['detail'], queryFn: async () => {
+    const { data, error, isFetching, refetch } = useQuery({ queryKey: ['detail'], queryFn: async () => {
         return await axios.get(`${baseURL}/${user}/${password}?codigo=${code}`);
     } });
 
     const estate = data?.data?.[0];
+
+    const randomNumber = () => {
+        return Math.floor(Math.random()  * (5 - 1) + 1);
+    }
+
+    const { data: similarEstates, error: errorSE, isFetching: isFetchingSE } = useQuery({ queryKey: ['similar-estates'], queryFn: async () => {
+        return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=4&pagina=${randomNumber()}`);
+    } });
 
     const containerRef = useRef<any>(null);
     const [image, setImage] = useState('');
@@ -36,6 +49,17 @@ export const Detail = () => {
     useEffect(() => {
         setImage(estate?.imagenes?.[0]?.fotourl)
     }, [data])
+
+    useEffect(() => {
+        scroll.scrollToTop({
+            duration: 0,
+            smooth: true,
+        });
+    }, [code]);
+
+    useEffect(() => {
+        refetch();
+    }, [code])
   
     return (
         <div className={styles['margin-top']}>
@@ -69,9 +93,8 @@ export const Detail = () => {
                                             >
                                                 {
                                                     estate?.imagenes?.map((item: any, index: number) => (
-                                                        <SwiperSlide className={styles['swiper-slide']}>
+                                                        <SwiperSlide className={styles['swiper-slide']} key={item?.fotourl+index}>
                                                             <img
-                                                                key={item?.fotourl+index}
                                                                 src={item?.fotourl} 
                                                                 alt="Foto del inmueble"
                                                                 ref={containerRef}
@@ -248,6 +271,59 @@ export const Detail = () => {
                                 </tr>
                             </table>
                         </div>
+
+                        <div style={{ marginTop: 20 }}>
+                            <p className={styles['generic-title']}>Inmuebles que pueden interesarte</p>
+                            {
+                                isFetchingSE && (
+                                    <div style={{ margin: '50px 0' }}>
+                                        <Loading />
+                                    </div>
+                                )
+                            }
+                            <div className={styles['grid-container']}>
+                                {
+                                    similarEstates?.data && similarEstates?.data?.map((estate: IEstate) => (
+                                        <Estate estate={estate} key={estate?.consecutivo + estate?.barrio} />
+                                    ))
+                                }
+                            </div>
+                            {
+                                errorSE?.message && <Error />
+                            }
+                        </div>
+                    </div>
+                )
+            }
+
+            {
+                !isFetching && !estate && (
+                    <div>
+                        <div className={styles['no-data-container']}>
+                            <Icon name='alerta' color='#ffc107' />
+                            <p style={{ color: '#333', fontWeight: 600 }}>No encontramos el inmueble {code}.</p>
+                        </div>
+
+                        <div style={{ marginTop: 40 }}>
+                            <p className={styles['generic-title']}>Inmuebles que pueden interesarte</p>
+                            {
+                                isFetchingSE && (
+                                    <div style={{ margin: '50px 0' }}>
+                                        <Loading />
+                                    </div>
+                                )
+                            }
+                            <div className={styles['grid-container']}>
+                                {
+                                    similarEstates?.data && similarEstates?.data?.map((estate: IEstate) => (
+                                        <Estate estate={estate} key={estate?.consecutivo + estate?.barrio} />
+                                    ))
+                                }
+                            </div>
+                            {
+                                errorSE?.message && <Error />
+                            }
+                        </div>
                     </div>
                 )
             }
@@ -255,6 +331,9 @@ export const Detail = () => {
             {
                 error?.message && <Error />
             }
+
+            <PseButton />
+            <WhatsappButton />
         </div>
     )
 }
