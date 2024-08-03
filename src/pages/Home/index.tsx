@@ -93,9 +93,9 @@ export const Home = () => {
             }}
             loop={true}
         >
-            <SwiperSlide><img src={banner1} alt="Banner 1" /></SwiperSlide>
-            <SwiperSlide><img src={banner2} alt="Banner 2" /></SwiperSlide>
-            <SwiperSlide><img src={banner3} alt="Banner 3" /></SwiperSlide>
+            <SwiperSlide><img src={banner1} alt="Banner 1" width={800} /></SwiperSlide>
+            <SwiperSlide><img src={banner2} alt="Banner 2" width={800} /></SwiperSlide>
+            <SwiperSlide><img src={banner3} alt="Banner 3" width={800} /></SwiperSlide>
         </Swiper>
 
         <div className={styles['centered']}>

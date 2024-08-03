@@ -29,6 +29,7 @@ export const Navbar = () => {
                                     src={logo} 
                                     alt="Logo de Arrendamientos Alvarez" 
                                     className={styles.logo} 
+                                    width={100}
                                 />
                             </Link>
 
@@ -83,7 +84,8 @@ export const Navbar = () => {
                                     src={logo} 
                                     alt="Logo de Arrendamientos Alvarez" 
                                     className={styles.logo} 
-                                    style={{ margin: 0, padding: 0, display: 'flex', justifyContent: 'center'}} 
+                                    style={{ margin: 0, padding: 0, display: 'flex', justifyContent: 'center'}}
+                                    width={100}
                                 />
                             </Link>
 
@@ -110,6 +112,7 @@ export const Navbar = () => {
                                                     });
                                                     setIsOpen(false);
                                                 }}
+                                                width={100}
                                             />
                                         </div>
                                         <div className={styles['child-container-mobile']}>

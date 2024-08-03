@@ -38,7 +38,10 @@ export const Estate = ({ estate }: any) => {
                             <img 
                                 src={image?.fotourl} 
                                 alt="Propiedad" 
-                                className={styles['product-image']} 
+                                className={styles['product-image']}
+                                width={500}
+                                height={500}
+                                loading="lazy"
                             />
                         </SwiperSlide>
                     ))}

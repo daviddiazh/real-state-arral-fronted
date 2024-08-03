@@ -1,7 +1,4 @@
 import { Link } from 'react-router-dom';
-// import fbLogo from '../../assets/icons/fb.svg';
-// import igLogo from '../../assets/icons/ig.svg';
-// import xLogo from '../../assets/icons/x.svg';
 import logo from '../../assets/logo-completo2.png';
 import styles from './styles.module.css';
 
@@ -11,15 +8,6 @@ export const Footer = () => {
         <div className={styles['second-component-container']}>
             <div className={styles['second-container']}>
                 <div className={styles['icons-rrss-container']}>
-                    {/* <Link to=''>
-                        <img src={fbLogo} alt="facebook logo" width={35} />
-                    </Link>
-                    <Link to=''>
-                        <img src={igLogo} alt="instagram logo" width={35} />
-                    </Link>
-                    <Link to=''>
-                        <img src={xLogo} alt="x logo" width={35} />
-                    </Link> */}
                     <Link to='/'>
                         <img src={logo} alt="x logo" width={130} />
                     </Link>

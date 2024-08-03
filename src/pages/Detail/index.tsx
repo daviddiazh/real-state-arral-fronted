@@ -100,6 +100,7 @@ export const Detail = () => {
                                                                 ref={containerRef}
                                                                 onMouseMove={() => setImage(item?.fotourl)}
                                                                 onClick={() => setImage(item?.fotourl)}
+                                                                width={70}
                                                             />
                                                         </SwiperSlide>
                                                     ))
@@ -204,7 +205,12 @@ export const Detail = () => {
                                                 onClick={() => handleWhatsAppClick()}
                                             >
                                                 <p>Pregúntanos por WhatsApp</p>
-                                                <img src={WhatsAppIcon} alt="WhatsApp icon" className={styles['wpp-icon']} />
+                                                <img 
+                                                    src={WhatsAppIcon} 
+                                                    alt="WhatsApp icon" 
+                                                    className={styles['wpp-icon']} 
+                                                    width={50}
+                                                />
                                             </button>
                                         </div>
                                         

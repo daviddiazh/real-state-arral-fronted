@@ -46,6 +46,8 @@ export const ImageZoom = ({ image }: ImageZoomProps) => {
                             className={styles["source"]}
                             alt="source"
                             src={image}
+                            width={400}
+                            height={400}
                         />
                         { isZoomed && (
                             <div

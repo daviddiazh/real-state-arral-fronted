@@ -18,7 +18,12 @@ export const WhatsappButton = () => {
                 <span className={`${isHovered ? styles['hovered-text'] : styles['hidden']}`}>
                     ¡Chatea con nosotros! 👋
                 </span>
-                <img src={WhatsAppIcon} alt="WhatsApp icon" className={styles['icon']} />
+                <img 
+                    src={WhatsAppIcon} 
+                    alt="WhatsApp icon" 
+                    className={styles['icon']} 
+                    width={50}
+                />
             </button>
         </div>
     );
