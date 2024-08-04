@@ -65,7 +65,7 @@ export const Detail = () => {
         <div className={styles['margin-top']}>
             {
                 isFetching && (
-                    <div style={{ margin: '50px 0' }}>
+                    <div style={{ marginTop: '90px' }}>
                         <Loading />
                     </div>
                 )

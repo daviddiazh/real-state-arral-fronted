@@ -43,7 +43,8 @@
 
 @media (max-width: 700px) {
     .container-component {
-        height: 85vh;
+        /* height: 85vh; */
+        height: 100%;
     }
 
     .message {

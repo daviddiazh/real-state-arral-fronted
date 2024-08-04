@@ -63,7 +63,7 @@ export const Search = () => {
                     )
                 }
             </div>
-            <div style={{ padding: '25px 15px' }}>
+            <div className={styles['container-btns1']}>
                 {
                     !isFetching && estates?.data && (
                         <>
@@ -98,11 +98,7 @@ export const Search = () => {
                 }
             </div>
             {
-                isFetching && (
-                    <div style={{ margin: '50px 0' }}>
-                        <Loading />
-                    </div>
-                )
+                isFetching && <Loading />
             }
             {
                 error?.message && <Error />
