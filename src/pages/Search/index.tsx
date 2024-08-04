@@ -38,12 +38,24 @@ export const Search = () => {
   }, []);
 
   useEffect(() => {
+    if ( !isFetching ) {
+        scroll.scrollToTop({
+            duration: 0,
+            smooth: true,
+        });
+    }
+  }, [page, isFetching]);
+
+  useEffect(() => {
     refetch();
   }, [page]);
 
   return (
         <div className={styles['margin-top']}>
             <p className={styles['title-estates']}>Busqueda de Inmuebles</p>
+            {
+                isFetching && <Loading />
+            }
             <div className={styles['grid-container']}>
                 {
                     estates?.data && estates?.data?.map((estate: IEstate) => (
@@ -97,9 +109,7 @@ export const Search = () => {
                     )
                 }
             </div>
-            {
-                isFetching && <Loading />
-            }
+
             {
                 error?.message && <Error />
             }
