@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Mousewheel, Keyboard, FreeMode } from 'swiper/modules';
 import { Loading } from "../../components/Loading";
 import { Error } from "../../components/Error";
-import { baseURL, password, user } from "../../utils/const";
+import { baseURL } from "../../utils/const";
 import { ImageZoom } from "../../components/ImageZoom";
 import { Contact } from "../../components/Contact";
 import { copFormatter } from "../../utils/copFormatter";
@@ -30,7 +30,7 @@ export const Detail = () => {
     const { code = '' } = useParams();
 
     const { data, error, isFetching, refetch } = useQuery({ queryKey: ['detail'], queryFn: async () => {
-        return await axios.get(`${baseURL}/${user}/${password}?codigo=${code}`);
+        return await axios.get(`${baseURL}/api/estates?codigo=${code}`);
     } });
 
     const estate = data?.data?.[0];
@@ -40,7 +40,7 @@ export const Detail = () => {
     }
 
     const { data: similarEstates, error: errorSE, isFetching: isFetchingSE } = useQuery({ queryKey: ['similar-estates'], queryFn: async () => {
-        return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=4&pagina=${randomNumber()}`);
+        return await axios.get(`${baseURL}/api/estates?cantidadporpagina=4&pagina=${randomNumber()}`);
     } });
 
     const containerRef = useRef<any>(null);

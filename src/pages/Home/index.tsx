@@ -21,7 +21,7 @@ import banner3 from '../../assets/banners/banner3.png';
 
 import { Icon } from '../../components/Icon';
 import { Estate } from '../../components/Estate';
-import { baseURL, password, user } from '../../utils/const';
+import { baseURL } from '../../utils/const';
 import { Error } from '../../components/Error';
 import { Loading } from '../../components/Loading';
 import { IEstate } from '../../interfaces/estate';
@@ -60,7 +60,7 @@ export const Home = () => {
   }
 
   const { data: estates, error, isLoading } = useQuery({ queryKey: ['starred-estates'], queryFn: async () => {
-    return await axios?.get(`${baseURL}/${user}/${password}?cantidadporpagina=4&pagina=1`);
+    return await axios.get(`${baseURL}/api/estates?cantidadporpagina=4&pagina=1`);
   } });
 
   const location = useLocation();

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import { animateScroll as scroll } from 'react-scroll';
 import { Estate } from '../../components/Estate';
-import { baseURL, password, user } from '../../utils/const';
+import { baseURL } from '../../utils/const';
 import styles from './styles.module.css';
 import { Loading } from '../../components/Loading';
 import { Error } from '../../components/Error';
@@ -20,13 +20,13 @@ export const Search = () => {
 
   const { data: estates, error, isFetching, refetch } = useQuery({ queryKey: ['search'], queryFn: async () => {
     if (serviceType === 'all' && code.length > 1) {
-        return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=12&pagina=${page}&codigo=${code}`);
+        return await axios.get(`${baseURL}/api/estates?cantidadporpagina=12&pagina=${page}&codigo=${code}`);
     } else if (serviceType !== 'all' && code === 'all') {
-        return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=12&pagina=${page}&destinacion=${serviceType}`);
+        return await axios.get(`${baseURL}/api/estates?cantidadporpagina=12&pagina=${page}&destinacion=${serviceType}`);
     } else if (serviceType !== 'all' && code !== 'all') {
-        return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=12&pagina=${page}&codigo=${code}&destinacion=${serviceType}`);
+        return await axios.get(`${baseURL}/api/estates?cantidadporpagina=12&pagina=${page}&codigo=${code}&destinacion=${serviceType}`);
     } else {
-        return await axios.get(`${baseURL}/${user}/${password}?cantidadporpagina=12&pagina=${page}`);
+        return await axios.get(`${baseURL}/api/estates?cantidadporpagina=12&pagina=${page}`);
     }
   } });
 
