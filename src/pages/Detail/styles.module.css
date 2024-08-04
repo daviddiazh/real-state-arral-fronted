@@ -3,21 +3,25 @@
 }
 
 .mySwiper {
-    max-width: 500px;
+    width: 500px;
     height: 75px;
 }
 
-.swiper-slide img {
+.swiper-slide {
     display: block;
     width: 70px;
     height: 70px;
     object-fit: cover;
 }
 
+.swiper-slide-img {
+    width: 100%;
+}
+
 .swiper-button-next,
 .swiper-button-prev {
-    width: 50px;  /* Cambia el ancho de la flecha */
-    height: 50px; /* Cambia el alto de la flecha */
+    width: 50px;
+    height: 50px;
     background-color: #fff;
     color: #000;
     display: flex;
@@ -27,7 +31,7 @@
   
 .swiper-button-next::after,
 .swiper-button-prev::after {
-    font-size: 30px; /* Cambia el tamaño de la flecha */
+    font-size: 30px;
 }
 
 

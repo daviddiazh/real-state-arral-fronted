@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
@@ -17,9 +17,12 @@ import { Icon } from "../../components/Icon";
 import { handleWhatsAppClick } from "../../utils/handleWhatsAppMessage";
 
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 import 'swiper/css';
+
 import styles from './styles.module.css';
-import '../../pages/Home/styles.css';
+// import '../../pages/Home/styles.css';
 import { IEstate } from "../../interfaces/estate";
 import { Estate } from "../../components/Estate";
 import { PseButton } from "../../components/PseButton";
@@ -43,7 +46,6 @@ export const Detail = () => {
         return await axios.get(`${baseURL}/api/estates?cantidadporpagina=4&pagina=${randomNumber()}`);
     } });
 
-    const containerRef = useRef<any>(null);
     const [image, setImage] = useState('');
 
     useEffect(() => {
@@ -98,10 +100,10 @@ export const Detail = () => {
                                                             <img
                                                                 src={item?.fotourl} 
                                                                 alt="Foto del inmueble"
-                                                                ref={containerRef}
                                                                 onMouseMove={() => setImage(item?.fotourl)}
                                                                 onClick={() => setImage(item?.fotourl)}
                                                                 width={70}
+                                                                className={styles['swiper-slide-img']}
                                                             />
                                                         </SwiperSlide>
                                                     ))
