@@ -14,7 +14,6 @@ import { Contact } from "../../components/Contact";
 import { copFormatter } from "../../utils/copFormatter";
 import WhatsAppIcon from '../../assets/icons/wpp.svg';
 import { Icon } from "../../components/Icon";
-import { handleWhatsAppClick } from "../../utils/handleWhatsAppMessage";
 
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -27,6 +26,7 @@ import { IEstate } from "../../interfaces/estate";
 import { Estate } from "../../components/Estate";
 import { PseButton } from "../../components/PseButton";
 import { WhatsappButton } from "../../components/WhatsAppButton";
+import { WhatsAppModal } from "../../components/WhatsAppModal";
 
 export const Detail = () => {
 
@@ -47,6 +47,7 @@ export const Detail = () => {
     } });
 
     const [image, setImage] = useState('');
+    const [openModal, setOpenModal] = useState(false);
 
     useEffect(() => {
         setImage(estate?.imagenes?.[0]?.fotourl)
@@ -205,7 +206,7 @@ export const Detail = () => {
                                         <div className={styles['btn-container']}>
                                             <button 
                                                 className={styles['btn-info']}
-                                                onClick={() => handleWhatsAppClick()}
+                                                onClick={() => setOpenModal(true)}
                                             >
                                                 <p>Pregúntanos por WhatsApp</p>
                                                 <img 
@@ -343,6 +344,8 @@ export const Detail = () => {
 
             <PseButton />
             <WhatsappButton />
+
+            <WhatsAppModal openModal={openModal} setOpenModal={setOpenModal} message={`Hola, me encuentro interesado en la propiedad ${estate?.consecutivo}`} />
         </div>
     )
 }

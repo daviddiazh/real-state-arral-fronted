@@ -178,7 +178,7 @@ export const Home = () => {
                     </div>
                     <div className={styles['container-about-info']}>
                         <Icon name='phone' size={16} />
-                        <p className={styles['text-about-info']}>315 709 0869 - 318 405 2662</p>
+                        <p className={styles['text-about-info']}><span style={{ fontWeight: 600 }}>318 405 2662 (principal)</span> - 312 767 0793</p>
                     </div>
                     <div className={styles['container-about-info']}>
                         <Icon name='mail-01' size={16} />
