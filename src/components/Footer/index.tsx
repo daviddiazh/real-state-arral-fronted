@@ -3,6 +3,11 @@ import logo from '../../assets/logo-completo2.png';
 import styles from './styles.module.css';
 
 export const Footer = () => {
+  const sendWppMessage = () => {
+    const encodedMessage = encodeURIComponent('Hola David, trabajemos juntos.');
+    window.open(`https://wa.me/573001981089?text=${encodedMessage}`, '_blank');
+  };
+
   return (
     <div className={styles['component-container']}>
         <div className={styles['second-component-container']}>
@@ -27,14 +32,20 @@ export const Footer = () => {
             </div>
         </div>
         <p className={styles['text-copyright']}>&copy; {new Date().getFullYear()} Arrendamientos Alvarez.</p>
-        <p style={{
-            textAlign: 'center',
-            fontSize: 14,
-            color: '#7a7979',
-            fontWeight: 500,
-            padding: '0 0 35px 0',
-            margin: 0,
-        }}>by. David Diaz H.</p>
+        <p 
+            style={{
+                textAlign: 'center',
+                fontSize: 14,
+                color: '#6b6969',
+                fontWeight: 500,
+                padding: '0 0 35px 0',
+                margin: 0,
+                textDecoration: 'underline',
+                textUnderlineOffset: 5,
+                cursor: 'pointer'
+            }}
+            onClick={sendWppMessage}
+        >by. David Diaz H.</p>
     </div>
   )
 }

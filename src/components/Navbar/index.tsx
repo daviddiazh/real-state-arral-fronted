@@ -47,6 +47,9 @@ export const Navbar = () => {
                                 <Link to='https://www.mipagoamigo.com/MPA_WebSite/ServicePayments/StartPayment?id=7653&searchedCategoryId=&searchedAgreementName=ARRENDAMIENTOS' target='_blank' className={styles.item}>
                                     <p className={styles.text}>Pagos</p>
                                 </Link>
+                                <Link to='/rent-request' className={styles.item}>
+                                    <p className={styles.text}>Solicitud de Arriendo</p>
+                                </Link>
                                 <Link to='/search/all/all' className={styles.item}>
                                     <p className={styles.text}>Inmuebles</p>
                                 </Link>
@@ -136,6 +139,13 @@ export const Navbar = () => {
                                                 onClick={() => setIsOpen(false)}
                                             >
                                                 <p className={styles.text}>Pagos</p>
+                                            </Link>
+                                            <Link 
+                                                to='/rent-request' 
+                                                className={styles.item}
+                                                onClick={() => setIsOpen(false)}
+                                            >
+                                                <p className={styles.text}>Solicitud de Arriendo</p>
                                             </Link>
                                             <Link 
                                                 to='/search/all/all' 
